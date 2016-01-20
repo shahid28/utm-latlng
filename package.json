@@ -1,0 +1,31 @@
+{
+  "name": "utm-latlng",
+  "version": "1.0.1",
+  "description": "LatLng to UTM converter vice versa",
+  "main": "UTMLatLng.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahid28/utm-latlng.git"
+  },
+  "keywords": [
+    "utm",
+    "latlon",
+    "latitude",  
+    "longitude",  
+    "convert",
+    "wgs84", 
+    "geodesy",  
+    "ellipsoid",
+    "coordinates"
+  ],
+  "author": {
+    "name": "Shahid Iqbal",
+    "email": "shahid.mca2010@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/shahid28/utm-latlng.git/issues"
+  }
+}
