@@ -4,18 +4,19 @@ LatLng to UTM converter vice versa for Nodejs.
 
 ## Installation
 
-Via [npm][]:
+Via [npm]:
 
 	$ npm install utm-latlng
 
 ## Usage
-
+### Javascript
 ```js
 var utmObj = require('utm-latlng');
 var utm=new utmObj(); //Default Ellipsoid is 'WGS 84'
 OR
 var utm=new utmObj('Everest');
 ```
+
 ## Ellipsoid List
 1.  Airy
 2.  Australian National
@@ -52,7 +53,7 @@ Convert from UTM to latitude/longitude coordinates.
 
 Returns `{ lat:xxxxx, lang:xxxxx }`.
 
-### `utm.convertLatLngToUtm(latitude, longitude);`
+### `utm.convertLatLngToUtm(latitude, longitude,precision);`
 
 Convert from latitude/longitude coordinates to UTM.
 

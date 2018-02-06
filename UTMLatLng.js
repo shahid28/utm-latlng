@@ -13,11 +13,16 @@ function UTMLatLng(datumNameIn) {
     this.setEllipsoid(datumName);
 }
 
-method.convertLatLngToUtm = function (latitude, longitude)
+method.convertLatLngToUtm = function (latitude, longitude,precision)
 {
     if (this.status)
     {
         return 'No ecclipsoid data associated with unknown datum: ' + datumName;
+    }
+
+    if(!Number.isInteger(precision))
+    {
+        return 'Precision is not integer number.';
     }
 
     latitude = parseFloat(latitude);
@@ -74,8 +79,11 @@ method.convertLatLngToUtm = function (latitude, longitude)
 
     if (latitude < 0)
         UTMNorthing += 10000000.0;
-    UTMNorthing = parseInt(Math.round(UTMNorthing));
-    UTMEasting = parseInt(Math.round(UTMEasting));
+    //UTMNorthing = parseInt(Math.round(UTMNorthing));
+    //UTMEasting = parseInt(Math.round(UTMEasting));
+
+    UTMNorthing = precisionRound(UTMNorthing,precision);
+    UTMEasting = precisionRound(UTMEasting,precision);
     return {Easting: UTMEasting, Northing: UTMNorthing, ZoneNumber: parseInt(ZoneNumber), ZoneLetter: UTMZone};
 
 
@@ -308,4 +316,9 @@ method.toRadians = function (deg) {
     return deg * Math.PI / 180;
 };
 
+
+ function precisionRound(number, precision) {
+  var factor = Math.pow(10, precision);
+  return Math.round(number * factor) / factor;
+}
 module.exports = UTMLatLng;
