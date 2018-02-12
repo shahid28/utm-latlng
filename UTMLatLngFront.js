@@ -12,10 +12,16 @@ function UTMLatLng (datumNameIn){
   this.setEllipsoid(datumName);
 }
 
-UTMLatLng.prototype.convertLatLngToUtm = function (latitude, longitude){
+UTMLatLng.prototype.convertLatLngToUtm = function (latitude, longitude,precision){
     if (this.status)
     {
         return 'No ecclipsoid data associated with unknown datum: ' + datumName;
+    }
+
+
+    if(!Number.isInteger(precision))
+    {
+        return 'Precision is not integer number.';
     }
 
     latitude = parseFloat(latitude);
@@ -107,7 +113,7 @@ UTMLatLng.prototype.convertUtmToLatLng = function (UTMEasting, UTMNorthing, UTMZ
         NorthernHemisphere = 1;
     } else {
         NorthernHemisphere = 0;
-        this.y -= 10000000.0;
+        y -= 10000000.0;
     }
 
     var LongOrigin = (ZoneNumber - 1) * 6 - 180 + 3;
@@ -301,3 +307,8 @@ UTMLatLng.prototype.toRadians = function (deg) {
 
     return deg * Math.PI / 180;
 };
+
+function precisionRound(number, precision) {
+      var factor = Math.pow(10, precision);
+      return Math.round(number * factor) / factor;
+  }
