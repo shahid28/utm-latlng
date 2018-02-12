@@ -66,22 +66,19 @@ method.convertLatLngToUtm = function (latitude, longitude,precision)
     var A = Math.cos(LatRad) * (LongRad - LongOriginRad);
 
     var M = this.a * ((1 - this.eccSquared / 4 - 3 * this.eccSquared * this.eccSquared / 64 - 5 * this.eccSquared * this.eccSquared * this.eccSquared / 256) * LatRad
-            - (3 * this.eccSquared / 8 + 3 * this.eccSquared * this.eccSquared / 32 + 45 * this.eccSquared * this.eccSquared * this.eccSquared / 1024) * Math.sin(2 * LatRad)
-            + (15 * this.eccSquared * this.eccSquared / 256 + 45 * this.eccSquared * this.eccSquared * this.eccSquared / 1024) * Math.sin(4 * LatRad)
-            - (35 * this.eccSquared * this.eccSquared * this.eccSquared / 3072) * Math.sin(6 * LatRad));
+        - (3 * this.eccSquared / 8 + 3 * this.eccSquared * this.eccSquared / 32 + 45 * this.eccSquared * this.eccSquared * this.eccSquared / 1024) * Math.sin(2 * LatRad)
+        + (15 * this.eccSquared * this.eccSquared / 256 + 45 * this.eccSquared * this.eccSquared * this.eccSquared / 1024) * Math.sin(4 * LatRad)
+        - (35 * this.eccSquared * this.eccSquared * this.eccSquared / 3072) * Math.sin(6 * LatRad));
 
     var UTMEasting = parseFloat(0.9996 * N * (A + (1 - T + C) * A * A * A / 6
-            + (5 - 18 * T + T * T + 72 * C - 58 * eccPrimeSquared) * A * A * A * A * A / 120)
-            + 500000.0);
+        + (5 - 18 * T + T * T + 72 * C - 58 * eccPrimeSquared) * A * A * A * A * A / 120)
+    + 500000.0);
 
     var UTMNorthing = parseFloat(0.9996 * (M + N * Math.tan(LatRad) * (A * A / 2 + (5 - T + 9 * C + 4 * C * C) * A * A * A * A / 24
-            + (61 - 58 * T + T * T + 600 * C - 330 * eccPrimeSquared) * A * A * A * A * A * A / 720)));
+        + (61 - 58 * T + T * T + 600 * C - 330 * eccPrimeSquared) * A * A * A * A * A * A / 720)));
 
     if (latitude < 0)
         UTMNorthing += 10000000.0;
-    //UTMNorthing = parseInt(Math.round(UTMNorthing));
-    //UTMEasting = parseInt(Math.round(UTMEasting));
-
     UTMNorthing = precisionRound(UTMNorthing,precision);
     UTMEasting = precisionRound(UTMEasting,precision);
     return {Easting: UTMEasting, Northing: UTMNorthing, ZoneNumber: parseInt(ZoneNumber), ZoneLetter: UTMZone};
@@ -114,14 +111,14 @@ method.convertUtmToLatLng = function (UTMEasting, UTMNorthing, UTMZoneNumber, UT
     {
         return "Please pass the UTMZoneLetter!";
     }
-   
+
     if ('N' === ZoneLetter) {
         NorthernHemisphere = 1;
     } else {
         NorthernHemisphere = 0;
-        this.y -= 10000000.0;
+        y -= 10000000.0;
     }
-  
+
     var LongOrigin = (ZoneNumber - 1) * 6 - 180 + 3;  
 
     var eccPrimeSquared = (this.eccSquared) / (1 - this.eccSquared);
@@ -130,8 +127,8 @@ method.convertUtmToLatLng = function (UTMEasting, UTMNorthing, UTMZoneNumber, UT
     var mu = M / (this.a * (1 - this.eccSquared / 4 - 3 * this.eccSquared * this.eccSquared / 64 - 5 * this.eccSquared * this.eccSquared * this.eccSquared / 256));
 
     var phi1Rad = mu + (3 * e1 / 2 - 27 * e1 * e1 * e1 / 32) * Math.sin(2 * mu)
-            + (21 * e1 * e1 / 16 - 55 * e1 * e1 * e1 * e1 / 32) * Math.sin(4 * mu)
-            + (151 * e1 * e1 * e1 / 96) * Math.sin(6 * mu);
+    + (21 * e1 * e1 / 16 - 55 * e1 * e1 * e1 * e1 / 32) * Math.sin(4 * mu)
+    + (151 * e1 * e1 * e1 / 96) * Math.sin(6 * mu);
     var phi1 = this.toDegrees(phi1Rad);
 
     var N1 = this.a / Math.sqrt(1 - this.eccSquared * Math.sin(phi1Rad) * Math.sin(phi1Rad));
@@ -141,11 +138,11 @@ method.convertUtmToLatLng = function (UTMEasting, UTMNorthing, UTMZoneNumber, UT
     var D = x / (N1 * 0.9996);
 
     var Lat = phi1Rad - (N1 * Math.tan(phi1Rad) / R1) * (D * D / 2 - (5 + 3 * T1 + 10 * C1 - 4 * C1 * C1 - 9 * eccPrimeSquared) * D * D * D * D / 24
-            + (61 + 90 * T1 + 298 * C1 + 45 * T1 * T1 - 252 * eccPrimeSquared - 3 * C1 * C1) * D * D * D * D * D * D / 720);
+        + (61 + 90 * T1 + 298 * C1 + 45 * T1 * T1 - 252 * eccPrimeSquared - 3 * C1 * C1) * D * D * D * D * D * D / 720);
     Lat = this.toDegrees(Lat);
 
     var Long = (D - (1 + 2 * T1 + C1) * D * D * D / 6 + (5 - 2 * C1 + 28 * T1 - 3 * C1 * C1 + 8 * eccPrimeSquared + 24 * T1 * T1)
-            * D * D * D * D * D / 120) / Math.cos(phi1Rad);
+        * D * D * D * D * D / 120) / Math.cos(phi1Rad);
     Long = LongOrigin + this.toDegrees(Long);
     return {lat: Lat, lng: Long};
 };
@@ -202,123 +199,123 @@ method.setEllipsoid = function (name)
 {
     switch (name) {
         case 'Airy':
-            this.a = 6377563;
-            this.eccSquared = 0.00667054;
-            break;
+        this.a = 6377563;
+        this.eccSquared = 0.00667054;
+        break;
         case 'Australian National':
-            this.a = 6378160;
-            this.eccSquared = 0.006694542;
-            break;
+        this.a = 6378160;
+        this.eccSquared = 0.006694542;
+        break;
         case 'Bessel 1841':
-            this.a = 6377397;
-            this.eccSquared = 0.006674372;
-            break;
+        this.a = 6377397;
+        this.eccSquared = 0.006674372;
+        break;
         case 'Bessel 1841 Nambia':
-            this.a = 6377484;
-            this.eccSquared = 0.006674372;
-            break;
+        this.a = 6377484;
+        this.eccSquared = 0.006674372;
+        break;
         case 'Clarke 1866':
-            this.a = 6378206;
-            this.eccSquared = 0.006768658;
-            break;
+        this.a = 6378206;
+        this.eccSquared = 0.006768658;
+        break;
         case 'Clarke 1880':
-            this.a = 6378249;
-            this.eccSquared = 0.006803511;
-            break;
+        this.a = 6378249;
+        this.eccSquared = 0.006803511;
+        break;
         case 'Everest':
-            this.a = 6377276;
-            this.eccSquared = 0.006637847;
-            break;
+        this.a = 6377276;
+        this.eccSquared = 0.006637847;
+        break;
         case 'Fischer 1960 Mercury':
-            this.a = 6378166;
-            this.eccSquared = 0.006693422;
-            break;
+        this.a = 6378166;
+        this.eccSquared = 0.006693422;
+        break;
         case 'Fischer 1968':
-            this.a = 6378150;
-            this.eccSquared = 0.006693422;
-            break;
+        this.a = 6378150;
+        this.eccSquared = 0.006693422;
+        break;
         case 'GRS 1967':
-            this.a = 6378160;
-            this.eccSquared = 0.006694605;
-            break;
+        this.a = 6378160;
+        this.eccSquared = 0.006694605;
+        break;
         case 'GRS 1980':
-            this.a = 6378137;
-            this.eccSquared = 0.00669438;
-            break;
+        this.a = 6378137;
+        this.eccSquared = 0.00669438;
+        break;
         case 'Helmert 1906':
-            this.a = 6378200;
-            this.eccSquared = 0.006693422;
-            break;
+        this.a = 6378200;
+        this.eccSquared = 0.006693422;
+        break;
         case 'Hough':
-            this.a = 6378270;
-            this.eccSquared = 0.00672267;
-            break;
+        this.a = 6378270;
+        this.eccSquared = 0.00672267;
+        break;
         case 'International':
-            this.a = 6378388;
-            this.eccSquared = 0.00672267;
-            break;
+        this.a = 6378388;
+        this.eccSquared = 0.00672267;
+        break;
         case 'Krassovsky':
-            this.a = 6378245;
-            this.eccSquared = 0.006693422;
-            break;
+        this.a = 6378245;
+        this.eccSquared = 0.006693422;
+        break;
         case 'Modified Airy':
-            this.a = 6377340;
-            this.eccSquared = 0.00667054;
-            break;
+        this.a = 6377340;
+        this.eccSquared = 0.00667054;
+        break;
         case 'Modified Everest':
-            this.a = 6377304;
-            this.eccSquared = 0.006637847;
-            break;
+        this.a = 6377304;
+        this.eccSquared = 0.006637847;
+        break;
         case 'Modified Fischer 1960':
-            this.a = 6378155;
-            this.eccSquared = 0.006693422;
-            break;
+        this.a = 6378155;
+        this.eccSquared = 0.006693422;
+        break;
         case 'South American 1969':
-            this.a = 6378160;
-            this.eccSquared = 0.006694542;
-            break;
+        this.a = 6378160;
+        this.eccSquared = 0.006694542;
+        break;
         case 'WGS 60':
-            this.a = 6378165;
-            this.eccSquared = 0.006693422;
-            break;
+        this.a = 6378165;
+        this.eccSquared = 0.006693422;
+        break;
         case 'WGS 66':
-            this.a = 6378145;
-            this.eccSquared = 0.006694542;
-            break;
+        this.a = 6378145;
+        this.eccSquared = 0.006694542;
+        break;
         case 'WGS 72':
-            this.a = 6378135;
-            this.eccSquared = 0.006694318;
-            break;
+        this.a = 6378135;
+        this.eccSquared = 0.006694318;
+        break;
         case 'ED50':
-            this.a = 6378388;
-            this.eccSquared = 0.00672267;
+        this.a = 6378388;
+        this.eccSquared = 0.00672267;
             break; // International Ellipsoid
-        case 'WGS 84':
+            case 'WGS 84':
         case 'EUREF89': // Max deviation from WGS 84 is 40 cm/km see http://ocq.dk/euref89 (in danish)
         case 'ETRS89': // Same as EUREF89 
-            this.a = 6378137;
-            this.eccSquared = 0.00669438;
-            break;
+        this.a = 6378137;
+        this.eccSquared = 0.00669438;
+        break;
         default:
-            this.status = true;
+        this.status = true;
             //   new Error('No ecclipsoid data associated with unknown datum: '.name);
 
-    }
-};
+        }
+    };
 
-method.toDegrees = function (rad) {
+    method.toDegrees = function (rad) {
 
-    return rad / Math.PI * 180;
-};
+        return rad / Math.PI * 180;
+    };
 
-method.toRadians = function (deg) {
+    method.toRadians = function (deg) {
 
-    return deg * Math.PI / 180;
-};
+        return deg * Math.PI / 180;
+    };
 
 
- function precisionRound(number, precision) {
-  var factor = Math.pow(10, precision);
-  return Math.round(number * factor) / factor;
-}
-module.exports = UTMLatLng;
+    function precisionRound(number, precision) {
+      var factor = Math.pow(10, precision);
+      return Math.round(number * factor) / factor;
+  }
+  module.exports = UTMLatLng;
