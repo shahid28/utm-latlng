@@ -112,7 +112,7 @@ method.convertUtmToLatLng = function (UTMEasting, UTMNorthing, UTMZoneNumber, UT
         return "Please pass the UTMZoneLetter!";
     }
 
-    if ('N' === ZoneLetter) {
+    if (['N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'].indexOf(ZoneLetter) !== -1) {
         NorthernHemisphere = 1;
     } else {
         NorthernHemisphere = 0;
