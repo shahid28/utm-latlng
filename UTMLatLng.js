@@ -123,7 +123,7 @@ method.convertUtmToLatLng = function (UTMEasting, UTMNorthing, UTMZoneNumber, UT
 
     var eccPrimeSquared = (this.eccSquared) / (1 - this.eccSquared);
 
-    M = y / 0.9996;
+    var M = y / 0.9996;
     var mu = M / (this.a * (1 - this.eccSquared / 4 - 3 * this.eccSquared * this.eccSquared / 64 - 5 * this.eccSquared * this.eccSquared * this.eccSquared / 256));
 
     var phi1Rad = mu + (3 * e1 / 2 - 27 * e1 * e1 * e1 / 32) * Math.sin(2 * mu)
