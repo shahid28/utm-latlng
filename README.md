@@ -51,10 +51,12 @@ var utm=new utmObj('Everest');
 
 Convert from UTM to latitude/longitude coordinates.
 
-Returns `{ lat:xxxxx, lng:xxxxx }`.
 
-### `utm.convertLatLngToUtm(latitude, longitude,precision);`
+Returns `{ lat: xxxxx, lng: xxxxx }`.
+
+
+### `utm.convertLatLngToUtm(latitude, longitude, precision);`
 
 Convert from latitude/longitude coordinates to UTM.
 
-Returns `{ Easting:xxxxx, Northing:xxxxx,  ZoneNumber:xxxx, ZoneLetter:xxxxx }`.
+Returns `{ Easting: xxxxx, Northing: xxxxx, ZoneNumber: xxxx, ZoneLetter: xxxxx }`.
