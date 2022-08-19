@@ -15,6 +15,7 @@ function UTMLatLng(datumNameIn) {
 
 method.convertLatLngToUtm = function (latitude, longitude,precision)
 {
+    var ZoneNumber;
     if (this.status)
     {
         return 'No ecclipsoid data associated with unknown datum: ' + datumName;
