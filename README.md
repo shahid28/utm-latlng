@@ -52,6 +52,7 @@ var utm=new utmObj('Everest');
 Convert from UTM to latitude/longitude coordinates.
 
 
+
 Returns `{ lat: xxxxx, lng: xxxxx }`.
 
 
