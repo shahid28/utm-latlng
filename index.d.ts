@@ -52,16 +52,17 @@ declare class UTMLatLng {
 Constructor(type?: ElipsoidType)
 
 ConvertLatLngToUtm(latitude: number, longitude: number, precision: number): string | {
-Easting: number;
-Northing: number;
-ZoneNumber: number;
-ZoneLetter: ZoneLetter;
+  Easting: number;
+  Northing: number;
+  ZoneNumber: number;
+  ZoneLetter: ZoneLetter;
 }
 
-convertUt ToLatLng(UTMEasting: number, UTMNorthing: number, UTMZoneNumber: number, UTMZoneLetter: Zoneletter): string | {
-lat: number;
-lng: number;
+convertUtmToLatLng(UTMEasting: number, UTMNorthing: number, UTMZoneNumber: number, UTMZoneLetter: ZoneLetter): string | {
+  lat: number;
+  lng: number;
 }
 
+
+}
 export = UTMLatLng;
-
