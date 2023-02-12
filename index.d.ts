@@ -82,7 +82,7 @@ declare function toUtm(
   latitude: number,
   longitude: number,
   precision: number,
-  ellipsoidName: ElipsoidType
+  ellipsoidName?: ElipsoidType
 ): {
   easting: number;
   northing: number;
@@ -97,3 +97,5 @@ declare function fromUtm(
   zoneLetter: string,
   ellipsoidName?: ElipsoidType
 ): { latitude: number; longitude: number };
+
+export { fromUtm, toUtm, UTMLatLng };

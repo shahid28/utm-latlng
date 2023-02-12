@@ -14,11 +14,11 @@
   "keywords": [
     "utm",
     "latlon",
-    "latitude",  
-    "longitude",  
+    "latitude",
+    "longitude",
     "convert",
-    "wgs84", 
-    "geodesy",  
+    "wgs84",
+    "geodesy",
     "ellipsoid",
     "coordinates"
   ],

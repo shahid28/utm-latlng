@@ -292,4 +292,4 @@ function fromUtm(easting, northing, zoneNumber, zoneLetter, ellipsoidName) {
   return { latitude, longitude };
 }
 
-export { fromUtm, toUtm };
+module.exports = { fromUtm, toUtm };
