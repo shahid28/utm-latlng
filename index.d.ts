@@ -58,9 +58,10 @@ ZoneNumber: number;
 ZoneLetter: ZoneLetter;
 }
 
-convertUt ToLatLng(UTMEasting: number, UTMNorthing: number, UTMZoneNumber: number, UTMZoneLetter: Zoneletter): string | {
+convertUtmToLatLng(UTMEasting: number, UTMNorthing: number, UTMZoneNumber: number, UTMZoneLetter: Zoneletter): string | {
 lat: number;
 lng: number;
+}
 }
 
 export = UTMLatLng;
