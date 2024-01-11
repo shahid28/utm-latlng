@@ -1,6 +1,6 @@
 {
   "name": "utm-latlng",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "LatLng to UTM converter vice versa",
   "main": "UTMLatLng.js",
   "scripts": {
