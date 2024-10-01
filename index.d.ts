@@ -49,16 +49,16 @@ type ZoneLetter = 'X'
 
 declare class UTMLatLng {
 
-Constructor(type?: ElipsoidType)
+constructor(type?: ElipsoidType)
 
-ConvertLatLngToUtm(latitude: number, longitude: number, precision: number): string | {
+convertLatLngToUtm(latitude: number, longitude: number, precision: number): string | {
 Easting: number;
 Northing: number;
 ZoneNumber: number;
 ZoneLetter: ZoneLetter;
 }
 
-convertUtmToLatLng(UTMEasting: number, UTMNorthing: number, UTMZoneNumber: number, UTMZoneLetter: Zoneletter): string | {
+convertUtmToLatLng(UTMEasting: number, UTMNorthing: number, UTMZoneNumber: number, UTMZoneLetter: ZoneLetter): string | {
 lat: number;
 lng: number;
 }
