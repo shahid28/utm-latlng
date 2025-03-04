@@ -4,6 +4,8 @@ LatLng to UTM converter vice versa for Nodejs.
 
 [![NPM Version][npm-version-image]][npm-url]
 [![NPM Downloads][npm-downloads-image]][npm-downloads-url]
+![License](https://img.shields.io/github/license/shahid28/utm-latlng)
+
 ## Installation
 
 Via [npm]:
