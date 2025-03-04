@@ -2,6 +2,8 @@
 
 LatLng to UTM converter vice versa for Nodejs.
 
+[![NPM Version][npm-version-image]][npm-url]
+[![NPM Downloads][npm-downloads-image]][npm-downloads-url]
 ## Installation
 
 Via [npm]:
@@ -61,3 +63,12 @@ Returns `{ lat: xxxxx, lng: xxxxx }`.
 Convert from latitude/longitude coordinates to UTM.
 
 Returns `{ Easting: xxxxx, Northing: xxxxx, ZoneNumber: xxxx, ZoneLetter: xxxxx }`.
+
+## License
+
+  [MIT](LICENSE)
+
+[npm-downloads-image]: https://badgen.net/npm/dm/utm-latlng
+[npm-downloads-url]: https://npmcharts.com/compare/utm-latlng?minimal=true
+[npm-url]: https://npmjs.org/package/utm-latlng
+[npm-version-image]: https://badgen.net/npm/v/utm-latlng
