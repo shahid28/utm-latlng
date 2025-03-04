@@ -16,9 +16,9 @@ Via [npm]:
 ### Javascript
 ```js
 var utmObj = require('utm-latlng');
-var utm=new utmObj(); //Default Ellipsoid is 'WGS 84'
+var utm = new utmObj(); //Default Ellipsoid is 'WGS 84'
 OR
-var utm=new utmObj('Everest');
+var utm = new utmObj('Everest');
 ```
 
 ## Ellipsoid List
