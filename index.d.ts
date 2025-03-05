@@ -62,6 +62,7 @@ declare class UTMLatLng {
     lat: number;
     lng: number;
   }
+
 }
 
 export = UTMLatLng;
